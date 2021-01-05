@@ -102,9 +102,9 @@ production environment, please test it first. Here is a demo based on WhatTheCod
 (I think WhatTheCodec is a very good project). On the basis of WhatTheCodec, I fixed 
 some problems and demonstrated how to use the pipe protocol in Android to pass media data to ffmpeg.
 
-Thank you Javernaut, WhatTheCodec: https://github.com/Javernaut/WhatTheCodec
+Thanks Javernaut, WhatTheCodec: https://github.com/Javernaut/WhatTheCodec
 
-My Demo: 
+My Demo: https://github.com/YiChaoLove/WhatTheCodec
 
 
 
