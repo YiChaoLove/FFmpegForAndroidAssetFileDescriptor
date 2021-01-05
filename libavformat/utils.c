@@ -569,7 +569,10 @@ FF_ENABLE_DEPRECATION_WARNINGS
     if ((ret = init_input(s, filename, &tmp)) < 0)
         goto fail;
     s->probe_score = ret;
-
+    //fix mov.h mov_build_index(...) function
+    if (s->pb) {
+        s->pb->skip_initial_bytes = s->skip_initial_bytes;
+    }
     if (!s->protocol_whitelist && s->pb && s->pb->protocol_whitelist) {
         s->protocol_whitelist = av_strdup(s->pb->protocol_whitelist);
         if (!s->protocol_whitelist) {

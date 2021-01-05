@@ -349,6 +349,14 @@ typedef struct AVIOContext {
      * Try to buffer at least this amount of data before flushing it
      */
     int min_packet_size;
+
+    /**
+     * Fix mov.h mov_build_index(...) function
+     * Skip initial bytes when opening stream
+     * - encoding: unused
+     * - decoding: Set by user
+     */
+    int64_t skip_initial_bytes;
 } AVIOContext;
 
 /**

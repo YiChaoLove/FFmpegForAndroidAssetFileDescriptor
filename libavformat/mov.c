@@ -3774,7 +3774,7 @@ static void mov_fix_index(MOVContext *mov, AVStream *st)
     msc->current_index = msc->index_ranges[0].start;
 }
 
-static void mov_build_index(MOVContext *mov, AVStream *st)
+static void mov_build_index(MOVContext *mov, AVStream *st, int64_t skip_initial_bytes)
 {
     MOVStreamContext *sc = st->priv_data;
     int64_t current_offset;
@@ -3938,7 +3938,7 @@ static void mov_build_index(MOVContext *mov, AVStream *st)
                         return;
                     }
                     e = &st->index_entries[st->nb_index_entries++];
-                    e->pos = current_offset;
+                    e->pos = current_offset + skip_initial_bytes;
                     e->timestamp = current_dts;
                     e->size = sample_size;
                     e->min_distance = distance;
@@ -4260,7 +4260,7 @@ static int mov_read_trak(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 
     avpriv_set_pts_info(st, 64, 1, sc->time_scale);
 
-    mov_build_index(c, st);
+    mov_build_index(c, st, pb->skip_initial_bytes);
 
     if (sc->dref_id-1 < sc->drefs_count && sc->drefs[sc->dref_id-1].path) {
         MOVDref *dref = &sc->drefs[sc->dref_id - 1];
