@@ -1,4 +1,4 @@
-FFmpeg for Android assets fd
+FFmpeg for Android AssetFileDescriptor
 =============
 
 I found that passing the android assets file descriptor(mp4) to ffmpeg does not work properly. I have tried the
@@ -55,7 +55,7 @@ typedef struct AVIOContext {
 ```
 * `libavformat/mov.c`
 
-  `mov_build_index(...)` adds `skip_initial_bytes` parameter. When traversing stsc([Sample-to-Chunk Atoms]("https://developer.apple.com/library/archive/documentation/QuickTime/QTFF/QTFFChap2/qtff2.html")),
+  `mov_build_index(...)` adds `skip_initial_bytes` parameter. When traversing stsc([Sample-to-Chunk Atoms](https://developer.apple.com/library/archive/documentation/QuickTime/QTFF/QTFFChap2/qtff2.html)),
   we add the corresponding skip_initial_bytes.
   
 ```c
@@ -93,7 +93,7 @@ if you use `ffmpeg_build_android.sh`, you need to modify the NDK path and HOST_T
 HOST_TAG=[mac: darwin-x86_64, linux: linux-x86_64]
 NDK=[your-ndk-path]
 ```
-For more detailed information, you can refer to [Use the NDK with other build systems]("https://developer.android.com/ndk/guides/other_build_systems").
+For more detailed information, you can refer to [Use the NDK with other build systems](https://developer.android.com/ndk/guides/other_build_systems).
 
 ## Usage
 
