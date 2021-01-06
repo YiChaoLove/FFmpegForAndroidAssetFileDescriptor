@@ -20,6 +20,7 @@ This is just my solution, if you have a better solution, welcome to share.
 
 The current modification is based on version 4.3.1, other versions may have the same problem.
 
+
 * `libavformat/avio.h` 
   
   Add `skip_initial_bytes` in `AVIOContext`, we pass `skip_initial_bytes` to `mov.c` through AVIOContext.
@@ -83,6 +84,7 @@ static int mov_read_trak(MOVContext *c, AVIOContext *pb, MOVAtom atom) {
 }
 ```
 
+commit: [755fd0165f61fd779f6601adb4ef2c1605545561](https://github.com/YiChaoLove/FFmpegForAndroidAssetFileDescriptor/commit/755fd0165f61fd779f6601adb4ef2c1605545561)
 
 ## Build
 
