@@ -9,12 +9,12 @@ there is no perfect solution, so I try to read the source code to solve this pro
 
 [How to properly pass an asset FileDescriptor to FFmpeg using JNI in Android](https://stackoverflow.com/questions/24701029/how-to-properly-pass-an-asset-filedescriptor-to-ffmpeg-using-jni-in-android)
 
-In the end, I think this is a bug of ffmpeg. When we call the ``avformat_open_input(...)`` function
-after passing the ``skip_initial_bytes`` parameter to ``AVFormatContext``, ``avformat_open_input(...)``
+In the end, I think this is a bug of ffmpeg. When we call the `avformat_open_input(...)` function
+after passing the `skip_initial_bytes` parameter to `AVFormatContext`, `avformat_open_input(...)`
 will call the `avio_skip(...)` function to skip the specified number of bytes, but when calling
-``av_read_frame(...)``, ``mov_read_packet(...)`` does not skip the specified the number of bytes (offset),
-so we can successfully call ``avformat_open_input(...)`` and ``avformat_find_stream_info(...)`` to
-obtain the information of the media file, but call ``av_read_frame(...)`` can not correctly obtain the data.
+`av_read_frame(...)`, `mov_read_packet(...)` does not skip the specified the number of bytes (offset),
+so we can successfully call `avformat_open_input(...)` and `avformat_find_stream_info(...)` to
+obtain the information of the media file, but call `av_read_frame(...)` can not correctly obtain the data.
 
 ## FIX
 This is just my solution, if you have a better solution, welcome to share. 
@@ -42,7 +42,6 @@ typedef struct AVIOContext {
   
   Assign `skip_initial_bytes` to `AVIOContext` after `init_input()`. `init_input()` will find 
   the file protocol of the url and create an `AVIOContext`.
-  
 ```c
     ...
     if ((ret = init_input(s, filename, &tmp)) < 0)
