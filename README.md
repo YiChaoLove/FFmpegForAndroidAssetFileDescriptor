@@ -2,11 +2,11 @@
 
 [English](README_EN.md)
 
-我发现在将Android中的AssetFileDescriptor传递到FFmpeg中并不能正常的读取和编码（mov格式），我尝试使用file协议或pipe协议，但是都存在问题。在stackoverflow上也有类似的问题，但是并没有一个完美的解决方案，所以我尝试阅读源码来解决这个问题。
+我发现将Android中的AssetFileDescriptor传递到FFmpeg中并不能正常的读取和编码（mov格式），我尝试使用file协议或pipe协议，但是都存在问题。在stackoverflow上也有类似的问题，但是并没有一个完美的解决方案，所以我尝试阅读源码来解决这个问题。
 
 [How to properly pass an asset FileDescriptor to FFmpeg using JNI in Android](https://stackoverflow.com/questions/24701029/how-to-properly-pass-an-asset-filedescriptor-to-ffmpeg-using-jni-in-android)
 
-最后，我认为这可能是一个bug，avformat_open_Input虽然内部调用了avio_skip函数来跳过指定的skip_initial_bytes，但是当调用av_read_fram函数读取数据时并没有跳过我们指定的skip_initial_ bytes。
+最后，我认为这可能是一个bug，`avformat_open_Input`虽然内部调用了`avio_skip`函数来跳过指定的`skip_initial_bytes`，但是当调用`av_read_frame`函数读取数据时并没有跳过我们指定的`skip_initial_bytes`。
 
 ### 修复
 
