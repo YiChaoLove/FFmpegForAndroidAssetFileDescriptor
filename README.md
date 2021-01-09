@@ -8,6 +8,8 @@
 
 最后，我认为这可能是一个bug，`avformat_open_Input`虽然内部调用了`avio_skip`函数来跳过指定的`skip_initial_bytes`，但是当调用`av_read_frame`函数读取数据时并没有跳过我们指定的`skip_initial_bytes`。
 
+（你可以使用该分支来测试验证这一问题：https://github.com/YiChaoLove/WhatTheCodec/tree/test/skip_initial_bytes）
+
 ### 修复
 
 这只是我的解决方案，如果你有更好的方案，欢迎分享
