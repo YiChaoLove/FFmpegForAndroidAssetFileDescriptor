@@ -10,6 +10,8 @@
 
 你可以使用该分支来测试验证这一问题：https://github.com/YiChaoLove/WhatTheCodec/tree/test/skip_initial_bytes 
 
+你可以阅读[FFmpeg读取Assets资源文件](https://juejin.cn/post/6917440481282654221/)来了解我对这个问题的分析
+
 ### 修复
 
 这只是我的解决方案，如果你有更好的方案，欢迎分享
@@ -98,4 +100,5 @@ NDK=[your-ndk-path]
 感谢 WhatTheCodec: https://github.com/Javernaut/WhatTheCodec
 
 我的Demo:  https://github.com/YiChaoLove/WhatTheCodec
+
 
